@@ -10,9 +10,6 @@
 // Sets default values
 ABaseGizmo::ABaseGizmo()
 {
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
 	RootScene = CreateDefaultSubobject<USceneComponent>(TEXT("RootScene"));
 	RootComponent = RootScene;
 
@@ -39,17 +36,6 @@ ABaseGizmo::ABaseGizmo()
 
 	bTransformInProgress = false;
 	bIsPrevRayValid = false;
-}
-
-void ABaseGizmo::Tick(float DeltaSeconds)
-{
-	Super::Tick(DeltaSeconds);
-
-	//ToDo: There seems to be an issue where the Root Scene doesn't Attach properly on the first 'go' on Unreal 4.26
-	if (RootScene)
-	{
-		RootScene->AttachToComponent(RootScene->GetAttachParent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
-	}
 }
 
 void ABaseGizmo::UpdateGizmoSpace(ESpaceType SpaceType)

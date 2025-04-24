@@ -18,8 +18,6 @@ public:
 	// Sets default values for this actor's properties
 	ABaseGizmo();
 
-	virtual void Tick(float DeltaSeconds) override;
-
 	virtual ETransformationType GetGizmoType() const { return ETransformationType::TT_NoTransform; }
 
 	virtual void UpdateGizmoSpace(ESpaceType SpaceType);
@@ -50,7 +48,7 @@ public:
 		, float SnappingValue) const ;
 
 	// Snapped Transform per Component is used when we need Absolute Snapping
-	// For Scaling, Absolute Snapping is needed and not delta ones 
+	// For Scaling, Absolute Snapping is needed and not delta ones
 	// for example, Object Scale (1) and Snapping of (5). Snapping sequence should be 5, 10... and not 6, 11...
 	virtual FTransform GetSnappedTransformPerComponent(const FTransform& OldComponentTransform
 		, const FTransform& NewComponentTransform
@@ -132,7 +130,7 @@ private:
 	// Maps the Box Component to their Respective Domain
 	TMap<class UShapeComponent*, ETransformationDomain> DomainMap;
 
-	//Whether Transform is in Progress or Not 
+	//Whether Transform is in Progress or Not
 	bool bTransformInProgress;
 
 protected:

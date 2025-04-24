@@ -11,10 +11,10 @@ DECLARE_LOG_CATEGORY_EXTERN(LogRuntimeTransformer, Log, All);
 UENUM(BlueprintType)
 enum class ETransformationType : uint8
 {
-	TT_NoTransform			UMETA(DisplayName = "None"),
 	TT_Translation			UMETA(DisplayName = "Translation"),
 	TT_Rotation				UMETA(DisplayName = "Rotation"),
-	TT_Scale				UMETA(DisplayName = "Scale")
+	TT_Scale				UMETA(DisplayName = "Scale"),
+	TT_NoTransform			UMETA(DisplayName = "None")
 };
 
 UENUM(BlueprintType)
@@ -25,7 +25,7 @@ enum class ESpaceType : uint8
 	ST_World			UMETA(DisplayName = "World Space"),
 };
 
-UENUM(BlueprintType) 
+UENUM(BlueprintType)
 enum class ETransformationDomain : uint8
 {
 	TD_None				UMETA(DisplayName = "None"),

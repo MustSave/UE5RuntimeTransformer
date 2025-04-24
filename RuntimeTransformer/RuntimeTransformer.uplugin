@@ -10,19 +10,14 @@
 	"DocsURL": "",
 	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/289c74dbc9614a77b67cf0c414ca43e0",
 	"SupportURL": "",
-	"EngineVersion": "4.27.0",
+	"EngineVersion": "5.4",
 	"CanContainContent": true,
 	"Installed": true,
 	"Modules": [
 		{
 			"Name": "RuntimeTransformer",
 			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"WhitelistPlatforms": [
-				"Win64",
-				"Win32",
-				"Mac"
-			]
+			"LoadingPhase": "Default"
 		}
 	]
 }
