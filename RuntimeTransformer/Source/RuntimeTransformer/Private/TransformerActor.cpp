@@ -331,6 +331,8 @@ void ATransformerActor::BeginPlay()
         ETransformationType::TT_Scale
     };
 
+    GizmoActorPool.SetNum(3);
+    int i = 0;
     for (ETransformationType& tt : TransformationTypes)
     {
         ABaseGizmo* gizmo = CreateGizmo(tt);
@@ -340,8 +342,10 @@ void ATransformerActor::BeginPlay()
         ensureMsgf(gizmo, TEXT("Gizmo of type %s could not be created!"), *StaticEnum<ETransformationType>()->GetNameStringByValue(static_cast<int64>(tt)));
         if (gizmo)
         {
-            GizmoActorPool.Add(gizmo);
+            GizmoActorPool[i] = (gizmo);
         }
+        ++i;
+        return;
     }
 }
 
@@ -935,6 +939,7 @@ void ATransformerActor::SetGizmo()
             else
             {
                 Gizmo = CreateGizmo(CurrentTransformation);
+                GizmoActorPool.SetNum(index + 1);
                 GizmoActorPool[index] = Gizmo;
             }
 		}
@@ -979,7 +984,8 @@ void ATransformerActor::UpdateGizmoPlacement()
 
 	if (ComponentToAttachTo)
 	{
-		Gizmo->AttachToComponent(ComponentToAttachTo, FAttachmentTransformRules::SnapToTargetIncludingScale);
+	    FName socketToAttach = AttachSocketName.IsNone() == false && ComponentToAttachTo->DoesSocketExist(AttachSocketName) ? AttachSocketName : NAME_None;
+		Gizmo->AttachToComponent(ComponentToAttachTo, FAttachmentTransformRules::SnapToTargetIncludingScale, socketToAttach);
 	}
 	else
 	{
