@@ -331,7 +331,7 @@ void ATransformerActor::BeginPlay()
         ETransformationType::TT_Scale
     };
 
-    GizmoActorPool.SetNum(3);
+    GizmoActorPool.SetNum(TransformationTypes.Num());
     int i = 0;
     for (ETransformationType& tt : TransformationTypes)
     {
